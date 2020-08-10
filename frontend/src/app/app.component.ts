@@ -9,7 +9,7 @@ import { Post } from './post';
 export class AppComponent {
   title = 'frontend';
 
-  private posts: Post[] = [
+  public posts: Post[] = [
     new Post("João","Meu Post","Subtitulo do Joao","joao@gmail.com","Minha Mensagem do João"),
     new Post("Maria","Meu Post","Subtitulo da Maria","maria@gmail.com","Minha Mensagem da Maria"),
     new Post("Jose","Meu Post","Subtitulo do Jose","jose@gmail.com","Minha Mensagem do Jose"),
