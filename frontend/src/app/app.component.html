@@ -4,7 +4,7 @@
 </mat-toolbar>
 <mat-divider></mat-divider>
 
-<app-post-dialog></app-post-dialog>
+
 
 <div fxLayout="row wrap" fxLayoutAlign="space-around stretch">
   <app-post *ngFor="let p of posts" [post]="p"></app-post>
@@ -12,7 +12,7 @@
 
 
 
-<button mat-fab class="float-button" color="primary">
+<button mat-fab class="float-button" color="primary" (click)="openDialog()" >
   <mat-icon>add</mat-icon>
 </button>
 

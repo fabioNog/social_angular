@@ -54,7 +54,9 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
   providers: [
     
   ],
-
+  entryComponents : [
+    PostDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

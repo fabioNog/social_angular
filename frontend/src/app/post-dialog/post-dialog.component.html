@@ -14,16 +14,30 @@
     <div fxLayout="row" fxLayoutAlign="space-between">
         <mat-form-field fxFlex="50">
             <input matInput placeholder="Seu Titulo">
-            <mat-hint>Digite aqui o titulo da mensagem</mat-hint>
+            <mat-hint>Digite aqui o titulo </mat-hint>
         </mat-form-field>
 
         <mat-form-field fxFlex="40">
             <input matInput placeholder="Seu subtitulo ">
-            <mat-hint>Digite aqui o subtitulo da mensagem</mat-hint>
+            <mat-hint>Digite aqui o subtitulo</mat-hint>
         </mat-form-field>
     </div>
     
     <mat-form-field>
         <textarea matInput placeholder="Deixe aqui sua mensagem"></textarea>
     </mat-form-field>
+</div>
+
+<input type="file" name="" style="display: none;" #fileinput>
+
+<button mat-strocked-button color="primary"(click)="fileinput.click()" >
+    <mat-icon>add_a_photo</mat-icon >
+    Adicionar uma Foto
+</button>
+
+<br><br>
+
+<div style="text-align: center;">
+    <button mat-button color="primary">OK</button>
+    <button mat-button color="warn">Cancelar</button>
 </div>
