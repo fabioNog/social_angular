@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Post } from './post';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,16 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 export class AppComponent {
   title = 'frontend';
 
-  public posts: Post[] = [
-    new Post("João","Meu Post","Subtitulo do Joao","joao@gmail.com","Minha Mensagem do João"),
-    new Post("Maria","Meu Post","Subtitulo da Maria","maria@gmail.com","Minha Mensagem da Maria"),
-    new Post("Jose","Meu Post","Subtitulo do Jose","jose@gmail.com","Minha Mensagem do Jose"),
-    new Post("JPedro","Meu Post","Subtitulo do Pedro","pedro@gmail.com","Minha Mensagem do JPedro"),
-  ]
+  public posts: Post[];
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private postService: PostService,
   ){}
+
+  ngOnInit(){
+    this.posts = this.postService.posts;
+  }
 
   openDialog(){ 
     const dialogRef = this.dialog.open(PostDialogComponent,{
