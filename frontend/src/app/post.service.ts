@@ -6,13 +6,41 @@ import { Post } from './post';
   providedIn: 'root'
 })
 export class PostService {
+  
+  public posts: Post[] = [];
+  constructor(private http: HttpClient) {
+      this.http.get("/api").subscribe(
+        (posts: any[]) => {
+          for(let p of posts){
+              this.posts.push(
+                new Post(
+                  p.nome,
+                  p.email,
+                  p.titulo,
+                  p.subtitulo,
+                  p.mensagem,
+                  p.arquivo,
+                  p.id,
+                  p.likes,
+                )
+              )
+          }
+        }
+      )
+   }
 
-  constructor(private http: HttpClient) { }
+   salvar(post: Post,file: File){
+    const uploadData = new FormData();
+    uploadData.append('nome',post.nome);
+    uploadData.append('email',post.email);
+    uploadData.append('titulo',post.titulo);
+    uploadData.append('subtitulo',post.subtitulo);
+    uploadData.append('mensagem',post.mensagem);
+    uploadData.append('arquivo', file, file.name);
 
-  public posts: Post[] = [
-    new Post("João","Meu Post","Subtitulo do Joao","joao@gmail.com","Minha Mensagem do João"),
-    new Post("Maria","Meu Post","Subtitulo da Maria","maria@gmail.com","Minha Mensagem da Maria"),
-    new Post("Jose","Meu Post","Subtitulo do Jose","jose@gmail.com","Minha Mensagem do Jose"),
-    new Post("JPedro","Meu Post","Subtitulo do Pedro","pedro@gmail.com","Minha Mensagem do JPedro"),
-  ]
+    this.http.post("/api",uploadData)
+      .subscribe((event: any) => {
+        console.log(event);
+      })
+   }
 }

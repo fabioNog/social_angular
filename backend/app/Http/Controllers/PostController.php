@@ -24,7 +24,7 @@ class PostController extends Controller
         $post->titulo    = $request->titulo;
         $post->subtitulo = $request->subtitulo;
         $post->mensagem  = $request->mensagem;
-        $post->path      = $path;
+        $post->arquivo   = $path;
         $post->likes     = 0;
         
         $post->save();
